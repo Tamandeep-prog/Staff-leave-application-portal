@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <title>Document</title>
+</head>
+<body>
+     <div class="jumbotron" style="margin-bottom: 0px;">
+        <div class="container">
+            <h1>IIT Ropar leave application portal</h1>
+          <h2 class="display-3">Welcome, Dr.  
+              <%= nickname %>
+          </h2>
+        </div>
+
+      </div>
+      <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+
+          <ul class="nav navbar-nav">
+            <li ><a href="/personal">Personal Information</a></li>
+          </ul>
+
+          <ul class="nav navbar-nav">
+            <li><a href="/leave">Leave History</a></li>
+          </ul>
+
+          <ul class="nav navbar-nav">
+            <li><a href="/newleave">Create new leave application</a></li>
+          </ul>
+
+          <ul class="nav navbar-nav">
+            <li class="active" ><a href="/leaveDetails">Leave Details</a></li>
+          </ul>
+
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="/"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
+          </ul>
+
+        </div>
+      </nav>
+
+      <div class="container mw-100">
+        <p class="mb-2">Status:  <span> <%= status %> </span></p>
+        <p class="mb-2">A_ID:  <span> <%= a_id %> </span></p>
+        <p class="mb-2">POST:  <span> <%= post %> </span></p>
+        <p class="mb-2">Reason:  <span> <%= reason %> </span></p>
+        <p class="mb-2">COMMENT:  <span> <%= comment %> </span></p>
+        <p class="mb-2">Submission Date: <span> <%= submission_date %> </span></p>
+        <p class="mb-2">Leave starting Date: <span> <%= begin %> </span></p>
+        <p class="mb-2">Leave Ending Date: <span> <%= end %> </span></p>
+      </div>
+
+</body>
+</html>

@@ -1,0 +1,30 @@
+CREATE OR REPLACE FUNCTION Aapplication_delete()
+RETURNS TRIGGER AS $$
+DECLARE
+s DATE;
+e Date;
+i INTEGER;
+k INTEGER;
+ii INTEGER;
+BEGIN
+ii:=-1;
+SELECT ID INTO ii from Active_application where e_id=1;
+IF ii<>-1 THEN
+SELECT leaves_left INTO i from Leaves where employ_id=ii;
+SELECT begin INTO s from Active_application where e_id=1;
+SELECT upto INTO e from Active_application where e_id=1;
+k:=e-s;
+i:= i-k-1;
+UPDATE Leaves SET leaves_left=i where employ_ID=ii;
+END IF;
+DELETE from Active_application where e_id=0 or e_id=1;
+
+RETURN NEW;
+END
+$$ LANGUAGE plpgsql;
+
+create trigger Application_deleter
+after update
+on Active_application
+for each row
+execute procedure Aapplication_delete();

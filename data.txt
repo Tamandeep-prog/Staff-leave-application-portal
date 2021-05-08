@@ -1,0 +1,36 @@
+db.data.insertOne( { _id: 11,
+name: "Nitin Auluck",
+background:"Faculty at IIT Ropar",
+publication:["Machine learning-based Acoustic Repellent System for Protecting Crops against Wild Animal Attacks","An IoT based Intelligent Irrigation Management System"] ,
+couses: ["Introduction to C","IOT"]
+ } );
+db.data.insertOne( { _id: 12, 
+name: "Viswanath Gunturi",
+background:"Faculty at IIT Ropar",
+publication:["Machine learning-based Acoustic Repellent System for Protecting Crops against domestic Animal Attacks","An IoT based Intelligent Irrigation cost System"] ,
+couses: ["Introduction to C++","ml"]
+ } );
+db.data.insertOne( { _id: 21, 
+name:"Ravibabu",
+background:"Faculty at IIT Ropar",
+publication:["chips","An IoT based Intelligent chips"] ,
+couses: ["Introduction to Chips","IOT of chips"]
+ } );
+db.data.insertOne( { _id: 22, 
+name: "Saifula",
+background:"Faculty at IIT Ropar",
+publication:["Machine learning-based capacitor","An IoT based Intelligent capacitor Management System"] ,
+couses: ["Introduction to Capacitor","IOT of capacitors"]
+ } );
+db.data.insertOne( { _id: 31,
+name: "Ekta Singla", 
+background:"Faculty at IIT Ropar",
+publication:["Machine learning-based robots","soft robots"] ,
+couses: ["Introduction to robots","IOT in robots"]
+ } );
+db.data.insertOne( { _id: 32, 
+name:"SC Roy",
+background:"Faculty at IIT Ropar",
+publication:["Machine","sosmam"] ,
+couses: ["FEM","Materials"]
+ } );

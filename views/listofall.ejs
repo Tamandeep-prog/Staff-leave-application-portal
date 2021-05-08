@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+</head>
+<body>
+    <div class="jumbotron" style="margin-bottom: 0px;">
+        <div class="container">
+            <h1>IIT Ropar Faculty portal</h1>
+          <h2 class="display-3">Welcome!
+            <span class="pull-right">
+              <a href="/">
+                login page
+              </a>
+            </span>
+          </h2>
+        </div>
+    </div>
+    
+    <div class="list-group container">
+      <h1>Faculties:
+      </h1>
+
+      <% for(var i=0;i<list.length;i++){ %>
+        <form action="/views/listofall.ejs", method="POST">
+          <button name="index" value="<%= i %>" type="submit" class="list-group-item bg-success list-group-item-action">
+            <div class="card text-white bg-dark mb-3" style="display: block;">
+              <div class="card-header"> ID: <%= list[i]['_id'] %> </div>
+              <div class="card-body">
+                <h5 class="card-title"><%= list[i]['name'] %></h5>
+                <p class="card-text"><%= list[i]['background'] %></p>
+              </div>
+          </div>
+          </button>
+        </form>
+      <% }; %>
+      
+    </div>
+</body>
+</html>
+
+<!-- list-group-item -->

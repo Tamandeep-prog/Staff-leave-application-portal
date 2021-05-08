@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <title>Document</title>
+</head>
+<body>
+     <div class="jumbotron" style="margin-bottom: 0px;">
+        <div class="container">
+            <h1>IIT Ropar leave application portal</h1>
+          <h2 class="display-3">Welcome, Dr.  
+              <%= nickname %>
+          </h2>
+        </div>
+
+      </div>
+      <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+
+          <ul class="nav navbar-nav">
+            <li><a href="/director">Personal Information</a></li>
+          </ul>
+
+          <ul class="nav navbar-nav">
+            <li class="active" ><a href="/staffleave">Staff Leaves</a></li>
+          </ul>
+
+          <ul class="nav navbar-nav">
+            <li><a href="/assignhod">Assign HOD/DEANS</a></li>
+          </ul>
+
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="/"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
+          </ul>
+
+        </div>
+      </nav>
+
+      <div class="list-group">
+
+        <% for(var i=0; i<row.length; i++) { %>
+          <form action="/staffleave", method="POST">
+            <p>Employ ID: <%= row[i]['id'] %> </p>
+              <p>Reason: <%= row[i]['reason'] %> <br> 
+                Add Comment: 
+              </p>
+              <textarea name="comment" id="comment" placeholder="comment"></textarea>
+              <span class="pull-right">
+                <div id="wrapper">
+                <label for="yes_no_radio">Approve leave?</label>
+                <p>
+                <input type="radio" name="yesno" value="1" checked>Yes</input>
+                </p>
+                <p>
+                <input type="radio" name="yesno" value="0" >No</input>
+                </p>
+                </div>
+                <button style="display:inline-block;" name="id" value="<%= row[i]['id'] %>" type="submit" class="list-group-item list-group-item-action"> 
+                  <p>submit</p>
+                </button>
+              </span>
+              <p> Submission Date: <%= row[i]['date'] %> </p>
+              <p> Begin Date: <%= row[i]['begin'] %> <br> End Date: <%= row[i]['upto'] %>
+              </p>
+              <br>
+              <hr>
+          </form>
+        <% }; %>
+        
+      </div>
+
+</body>
+</html>

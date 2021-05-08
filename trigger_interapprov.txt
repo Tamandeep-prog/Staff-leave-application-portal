@@ -1,0 +1,38 @@
+CREATE OR REPLACE FUNCTION Aapplication_update()
+RETURNS TRIGGER AS $$
+DECLARE
+p VARCHAR(10);
+cs INTEGER;
+me INTEGER;
+ee INTEGER;
+fa INTEGER;
+d INTEGER;
+ap VARCHAR(15);
+BEGIN
+select hod into cs from Department where name='CSE' ;
+select hod into ee from Department where name='EE';
+select hod into me from Department where name='ME' ;
+select ID into fa from Deans_Director where Position='Dean Faculty Affairs' ;
+select ID into d from Deans_Director where Position='Director' ;
+p:='aaaaaaaa';
+IF OLD.e_ID=cs THEN p:='HOD CSE';
+ELSEIF OLD.e_ID=ee THEN p:='HOD EE';
+ELSEIF OLD.e_ID=me THEN p:='HOD ME';
+ELSEIF OLD.e_ID=fa THEN p:='DEAN FA';
+ELSEIF OLD.e_ID=d THEN p:='Director';
+END IF;
+ap:='approved';
+IF NEW.e_ID=0 THEN ap:='not approved';
+END IF;
+IF OLD.e_ID<>NEW.e_ID and p<>'aaaaaaaa' THEN
+insert into Past_application(status,a_ID,post,date,reason)values(ap,old.ID,p,CURRENT_DATE,OLD.reason);
+END IF;
+RETURN NEW;
+END
+$$ LANGUAGE plpgsql;
+
+create trigger Application_updater
+before update
+on Active_application
+for each row
+execute procedure Aapplication_update();

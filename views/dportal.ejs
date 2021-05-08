@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <title>Document</title>
+</head>
+<body>
+     <div class="jumbotron" style="margin-bottom: 0px;">
+        <div class="container">
+            <h1>IIT Ropar leave application portal</h1>
+          <h2 class="display-3">Welcome, Dr.  
+              <%= nickname %>
+          </h2>
+        </div>
+
+      </div>
+      <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="/dportal">Personal Information</a></li>
+          </ul>
+
+          <ul class="nav navbar-nav">
+            <li><a href="/dleave">Leave</a></li>
+          </ul>
+
+          <ul class="nav navbar-nav">
+            <li><a href="/dnewleave">Create/Active Leave Application</a></li>
+          </ul>
+          
+          <ul class="nav navbar-nav">
+            <li><a href="/dstaffleave">Staff Leaves</a></li>
+          </ul>
+
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="/"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
+          </ul>
+        </div>
+      </nav>
+
+      <div class="list-group container">
+        <p class="mb-2">ID:  <span> <%= id %> </span></p>
+        <p class="mb-2">NAME:  <span>Dr. <%= nickname %> </span></p>
+        <p class="mb-2">EMAIL:  <span> <%= email %> </span></p>
+        <p class="mb-2">CONTACT NUMBER:  <span> <%= number %> </span></p>
+      </div>
+
+      <div class="list-group container">
+        
+        <% if(list !== undefined) { %>
+        <h1>background:</h1>
+        <p> <%= list['background'] %> 
+        </p>
+        <%}%>
+        <hr style="height:2px; border-width:0; color:darkgreen; background-color:darkgreen">
+
+        <h1>publications:</h1>
+        
+        <% if(list !== undefined) { %>
+
+        <% for(var i=0; i<list['publication'].length; i++) { %>
+          <p style="display: inline;">
+            <%= i+1%> 📕
+              <%= list['publication'][i] %> <br>
+              <span class="pull-right"> 
+                <form style="display: inline;" class="pull-right" action="/deletePub" method="POST">
+                <button type="submit" name="index" value="<%= i %>" style="display: inline;">❌
+                </button>
+              </form>
+              </span>
+          </p>
+        <% }; %>
+
+        <%}%>
+
+        <form action="/publication" class="form-signin" method="POST">
+          <label for="newPublication">New Publication:<br></label>    
+          <input type="text" name = "reason" id="newPublication" class="form-control" placeholder="New Publication" required autofocus>
+          <div style="height: 10px;"></div>
+          <button class="btn btn-lg btn-primary btn-block" type="submit">Submit</button>
+        </form>
+
+        <hr style="height:2px; border-width:0; color:darkgreen; background-color:darkgreen">
+  
+        <h1>courses:</h1>
+        
+        <% if(list !== undefined) { %>
+
+        <% for(var i=0; i<list['couses'].length; i++) { %>
+          <p style="display: inline;">
+            <%= i+1%> 📖
+              <%= list['couses'][i] %><br>
+              <span class="pull-right"> 
+                <form style="display: inline;" class="pull-right" action="/deleteCou" method="POST">
+                <button type="submit" name="index" value="<%= i %>" style="display: inline;">❌
+                </button>
+              </form>
+              </span>
+          </p>
+        <% }; %>
+
+        <%}%>
+
+        <form action="/couses" class="form-signin" method="POST">
+          <label for="newCourse">New Course:<br></label>    
+          <input type="text" name = "reason" id="newCourse" class="form-control" placeholder="New Course" required autofocus>
+          <div style="height: 10px;"></div>
+          <button class="btn btn-lg btn-primary btn-block" type="submit">Submit</button>
+        </form>
+        
+      </div>
+
+</body>
+</html>

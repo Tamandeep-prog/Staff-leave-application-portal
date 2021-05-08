@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <title>Document</title>
+</head>
+<body>
+     <div class="jumbotron" style="margin-bottom: 0px;">
+        <div class="container">
+            <h1>IIT Ropar leave application portal</h1>
+          <h2 class="display-3">Welcome, Dr.  
+              <%= nickname %>
+          </h2>
+        </div>
+
+      </div>
+      <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+
+          <ul class="nav navbar-nav">
+            <li><a href="/sportal">Personal Information</a></li>
+          </ul>
+
+          <ul class="nav navbar-nav">
+            <li><a href="/sleave">Leave</a></li>
+          </ul>
+
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="/snewleave">Create/Active Leave Application</a></li>
+          </ul>
+          
+          <ul class="nav navbar-nav">
+            <li><a href="/sstaffleave">Staff Leaves</a></li>
+          </ul>
+
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="/"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
+          </ul>
+        </div>
+      </nav>
+
+      <div class="container">
+        <p>Leaves left: <%=ll%></p>
+        <form action="/snewleave" class="form-signin" method="POST">
+            <h1 class="h3 mb-3 font-weight-normal">Apply for new leave portal</h1>
+            <div style="height: 10px;"></div>
+
+            <label for="inputReason">Reason for applying for leave:<br></label>    
+            <input type="text" name = "reason" id="inputReason" class="form-control" placeholder="Reason to apply for leave" required autofocus>
+            
+            <label for="inputBeginDate">Leave starting Date:<br></label>
+            <input style="width: 250px;" type="date" name = "begin" id="inputBeginDate" class="form-control" required>
+
+            <label for="inputEndDate">Leave Ending Date:<br></label>
+            <input style="width: 250px;" type="date" name = "end" id="inputEndDate" class="form-control" required>
+            
+            <div style="height: 10px;"></div>
+            
+            <button class="btn btn-lg btn-primary btn-block" type="submit">Submit Leave Application</button>
+          </form>
+      </div>
+
+
+</body>
+</html>

@@ -1,0 +1,109 @@
+CREATE TABLE Faculty(
+department VARCHAR(10),
+name VARCHAR(20),
+email VARCHAR(20),
+number integer,
+ID INTEGER,
+PRIMARY KEY(ID)
+);
+INSERT INTO Faculty(department, name,email,number,ID)VALUES('CSE', 'Nitin Auluck', 'auluk@iitrpr.ac.in', 1234567890, 11);
+INSERT INTO Faculty(department, name,email,number,ID)VALUES('CSE', 'Viswanath Gunturi', 'gunturi@iitrpr.ac.in', 1234567891, 12);
+INSERT INTO Faculty(department, name,email,number,ID)VALUES('EE', 'Ravibabu', 'ravi@iitrpr.ac.in', 1234567892, 21);
+INSERT INTO Faculty(department, name,email,number,ID)VALUES('EE', 'Saifula', 'saif@iitrpr.ac.in', 1234567893, 22);
+INSERT INTO Faculty(department, name,email,number,ID)VALUES('ME', 'Ekta Singla', 'singla@iitrpr.ac.in', 1234567894, 31);
+INSERT INTO Faculty(department, name,email,number,ID)VALUES('ME', 'SC Roy', 'roy@iitrpr.ac.in', 1234567895, 32);
+
+CREATE TABLE CCFaculty(
+name VARCHAR(20),
+email VARCHAR(20),
+number integer,
+ID INTEGER,
+PRIMARY KEY(ID)
+);
+INSERT INTO CCFaculty(name,email,number,ID)VALUES('Deepak Kashyap', 'kashyap@iitrpr.ac.in', 1134567890, 41);
+INSERT INTO CCFaculty(name,email,number,ID)VALUES('Sarit K. Das', 'das@iitrpr.ac.in', 1114567890, 42);
+
+CREATE TABLE Department(
+name VARCHAR(10),
+hod INTEGER,
+begin timestamptz,
+upto timestamptz,
+PRIMARY KEY(name,hod)
+);
+INSERT INTO Department(name,hod,begin)VALUES('CSE', 11, '2017-03-18 08:21:36.175627+07');
+INSERT INTO Department(name,hod,begin)VALUES('EE', 21, '2019-03-18 08:21:36.175627+07');
+INSERT INTO Department(name,hod,begin)VALUES('ME', 31, '2018-03-18 08:21:36.175627+07');
+
+CREATE TABLE Deans_Director(
+Position VARCHAR(100),
+ID INTEGER,
+begin timestamptz,
+upto timestamptz,
+PRIMARY KEY(Position, ID)
+);
+INSERT INTO Deans_Director(Position,ID,begin)VALUES('Dean Faculty Affairs', 41, '2017-03-18 08:21:36.175627+07');
+INSERT INTO Deans_Director(Position,ID,begin)VALUES('Director', 42, '2017-03-18 08:21:36.175627+07');
+
+
+CREATE TABLE Leaves(
+employ_id INTEGER,
+leaves_left INTEGER,
+PRIMARY KEY(employ_id, leaves_left)
+);
+INSERT INTO Leaves(employ_id,leaves_left)VALUES(11,10);
+INSERT INTO Leaves(employ_id,leaves_left)VALUES(12,10);
+INSERT INTO Leaves(employ_id,leaves_left)VALUES(22,10);
+INSERT INTO Leaves(employ_id,leaves_left)VALUES(21,10);
+INSERT INTO Leaves(employ_id,leaves_left)VALUES(31,10);
+INSERT INTO Leaves(employ_id,leaves_left)VALUES(32,10);
+INSERT INTO Leaves(employ_id,leaves_left)VALUES(41,10);
+INSERT INTO Leaves(employ_id,leaves_left)VALUES(42,10);
+
+CREATE TABLE Active_application(
+status VARCHAR(10),
+ID INTEGER,
+e_ID INTEGER,
+Reason VARCHAR(250),
+submission_date DATE,
+begin DATE,
+upto DATE,
+PRIMARY KEY(ID)
+);
+INSERT INTO Active_application(status,ID,e_ID,Reason,submission_date,begin,upto)VALUES('pending',22,21,'bla bla bla','2021-01-01','2021-03-03','2021-04-04');
+INSERT INTO Active_application(status,ID,e_ID,Reason,submission_date,begin,upto)VALUES('pending',32,31,'bla bla bla','2021-01-01','2021-03-03','2021-04-04');
+
+CREATE TABLE Past_application(
+status VARCHAR(15),
+a_ID INTEGER,
+post VARCHAR(20),
+comment VARCHAR(250),
+date DATE,
+begin DATE,
+upto DATE,
+reason VARCHAR(250),
+PRIMARY KEY(a_ID,post,date)
+);
+
+INSERT INTO Past_application(status,a_id,post,comment,date,reason,begin,upto)VALUES('approved', 12, 'HOD','yo yo yo', '2020-12-11', 'bla bla bla','2021-01-11','2021-01-12');
+INSERT INTO Past_application(status,a_id,post,comment,date,reason,begin,upto)VALUES('approved', 12, 'Dean Faculty Affairs','yo yo yo', '2020-12-12', 'bla bla bla','2021-01-11','2021-01-12');
+INSERT INTO Past_application(status,a_id,post,comment,date,reason,begin,upto)VALUES('approved', 22, 'HOD','yo yo yo', '2020-11-11', 'bla bla bla','2021-01-11','2021-01-12');
+INSERT INTO Past_application(status,a_id,post,comment,date,reason,begin,upto)VALUES('approved', 22, 'Dean Faculty Affairs','yo yo yo', '2020-11-11', 'bla bla bla','2021-01-11','2021-01-12');
+INSERT INTO Past_application(status,a_id,post,comment,date,reason,begin,upto)VALUES('approved', 32, 'HOD','yo yo yo', '2020-11-12','bla bla bla','2021-01-11','2021-01-12');
+INSERT INTO Past_application(status,a_id,post,comment,date,reason,begin,upto)VALUES('approved', 32, 'Dean Faculty Affairs','yo yo yo', '2020-10-12', 'bla bla bla','2021-01-11','2021-01-12');
+INSERT INTO Past_application(status,a_id,post,comment,date,reason,begin,upto)VALUES('not approved', 11, 'Director','yo yo yo', '2020-10-12', 'bla bla bla','2021-01-11','2021-01-12');
+INSERT INTO Past_application(status,a_id,post,comment,date,reason,begin,upto)VALUES('approved', 41, 'Director','yo yo yo', '2020-12-12', 'bla bla bla','2021-01-11','2021-01-12');
+
+CREATE TABLE Password(
+ID INTEGER,
+Password VARCHAR(20),
+PRIMARY KEY(ID, Password)
+);
+
+INSERT INTO Password(ID,Password)VALUES(11,'123');
+INSERT INTO Password(ID,Password)VALUES(12,'123');
+INSERT INTO Password(ID,Password)VALUES(21,'123');
+INSERT INTO Password(ID,Password)VALUES(22,'123');
+INSERT INTO Password(ID,Password)VALUES(31,'123');
+INSERT INTO Password(ID,Password)VALUES(32,'123');
+INSERT INTO Password(ID,Password)VALUES(41,'123');
+INSERT INTO Password(ID,Password)VALUES(42,'123');

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <title>Document</title>
+</head>
+<body>
+     <div class="jumbotron" style="margin-bottom: 0px;">
+        <div class="container">
+            <h1>IIT Ropar leave application portal</h1>
+          <h2 class="display-3">Welcome, Dr.  
+              <%= nickname %>
+          </h2>
+        </div>
+
+      </div>
+      <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+
+          <ul class="nav navbar-nav">
+            <li><a href="/director">Personal Information</a></li>
+          </ul>
+
+          <ul class="nav navbar-nav">
+            <li><a href="/staffleave">Staff Leaves</a></li>
+          </ul>
+
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="/assignhod">Assign HOD/DEANS</a></li>
+          </ul>
+
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="/"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
+          </ul>
+
+        </div>
+      </nav>
+
+      <div class="list-group">
+
+        <% for(var i=0; i<dean.length; i++) { %>
+          <form action="/assignhod", method="POST">
+            <span class="pull-right">  
+              <p>DEAN ID: <br></p>
+              <input type="text" name="dean" value="<%=dean[i]['position']%>" placeholder="<%=dean[i]['position']%>" readonly>
+              <input type="number" name="new" placeholder="<%=dean[i]['id']%>">
+              <button type="submit">submit</button>
+            </span>
+            <p>Name OF DEAN: <%= dean[i]['position'] %> <br></p>
+              <p> BEGIN Date: <%= dean[i]['begin'] %> </p>
+              <hr>
+          </form>
+        <% }; %>
+
+        <% for(var i=0; i<row.length; i++) { %>
+          <form action="/assignhod", method="POST">
+            <span class="pull-right">  
+              <p>HOD ID: <br></p>
+              <input type="text" name="hod" value="<%=row[i]['name']%>" placeholder="<%=row[i]['name']%>" readonly>
+              <input type="number" name="new" placeholder="<%=row[i]['hod']%>">
+              <button type="submit">submit</button>
+            </span>
+            <p>Name od Department: <%= row[i]['name'] %> <br></p>
+              <p> BEGIN Date: <%= row[i]['begin'] %> </p>
+              <hr>
+          </form>
+        <% }; %>
+        
+      </div>
+
+</body>
+</html>

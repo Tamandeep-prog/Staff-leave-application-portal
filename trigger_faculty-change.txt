@@ -1,0 +1,31 @@
+CREATE OR REPLACE FUNCTION hod_update()
+RETURNS TRIGGER AS $$
+
+BEGIN
+update active_application set e_id = new.hod where e_id=old.hod;
+RETURN NEW;
+
+END
+$$ LANGUAGE plpgsql;
+
+create trigger hod_updater
+before update
+on Department
+for each row
+execute procedure hod_update();
+
+CREATE OR REPLACE FUNCTION dean_update()
+RETURNS TRIGGER AS $$
+
+BEGIN
+
+update active_application set e_id = new.id where e_id=old.id;
+RETURN NEW;
+END
+$$ LANGUAGE plpgsql;
+
+create trigger dean_updater
+before update
+on Deans_Director
+for each row
+execute procedure dean_update();

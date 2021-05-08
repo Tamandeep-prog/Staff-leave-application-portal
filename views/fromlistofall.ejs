@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+</head>
+<body>
+    <div class="jumbotron" style="margin-bottom: 0px;">
+        <div class="container">
+            <h1>IIT Ropar Faculty portal</h1>
+          <h2 class="display-3">Welcome!
+            <span class="pull-right">
+              <a href="/">
+                login page
+              </a>
+            </span>
+          </h2>
+        </div>
+    </div>
+
+    <div class="list-group container">
+      <h1>Faculty: Dr. <%= list['name'] %>
+      </h1>
+      <h1>background:</h1>
+      <p> <%= list['background'] %> </p>
+      
+      <hr style="height:2px; border-width:0; color:darkgreen; background-color:darkgreen">
+
+      <h1>publications:</h1>
+      <% for(var i=0; i<list['publication'].length; i++) { %>
+        <p style="display: inline;">
+          <%= i+1%> 📕
+            <%= list['publication'][i] %> <br>
+        </p>
+      <% }; %>
+
+      <hr style="height:2px; border-width:0; color:darkgreen; background-color:darkgreen">
+
+      <h1>courses:</h1>
+      <% for(var i=0; i<list['couses'].length; i++) { %>
+        <p style="display: inline;">
+          <%= i+1%> 📖
+            <%= list['couses'][i] %><br>
+        </p>
+      <% }; %>
+      
+    </div>
+
+</body>
+</html>
+
+<!-- list-group-item -->
